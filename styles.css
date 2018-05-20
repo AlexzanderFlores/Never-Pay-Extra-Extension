@@ -1,0 +1,121 @@
+.never-pay-extra {
+	display: grid;
+	grid-template-columns: 150px 55px;
+	align-items: center;
+	height: 40px;
+	width: 210px;
+	margin: 20px 0;
+	grid-column-gap: 14.4px;
+}
+
+.never-pay-extra > * {
+	position: relative;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	height: 100%;
+	border: 1px solid #F9656A;
+	border-radius: 5px;
+}
+
+#never-pay-extra-save-button {
+	grid-template-columns: 50px 100px;
+	padding: 5px;
+}
+
+#never-pay-extra-save-button img {
+	height: 100%;
+	margin-left: 5px;
+}
+
+#never-pay-extra-save-button > #never-pay-extra-text-container {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+#never-pay-extra-save-button > #never-pay-extra-text-container > span {
+	display: grid;
+	justify-items: center;
+	width: 100%;
+}
+
+#never-pay-extra-track-button img {
+	height: 80%;
+}
+
+.never-pay-extra-spacer {
+	position: absolute;
+	height: 15px;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.never-pay-extra-popup {
+	position: absolute;
+	display: grid;
+	padding: 0 20px;
+	align-items: center;
+	justify-items: center;
+	text-decoration: none;
+	overflow-y: hidden;
+	z-index: 999;
+	color: #000;
+	height: 0;
+	background-color: #FFF;
+	box-shadow: 0 0 10px gray;
+	border-radius: 3px;
+	text-align: center;
+	transition-duration: .5s;
+}
+
+.never-pay-extra-popup:hover {
+	text-decoration: none;
+}
+
+#never-pay-extra-product-popup {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	width: 200px;
+	margin-top: 200px;
+}
+
+#never-pay-extra-product-popup img {
+	padding-bottom: 20px;
+}
+
+#never-pay-extra-tracker-popup {
+	width: 200px;
+	margin-top: 285px;
+}
+
+#never-pay-extra-tracker-popup input {
+	width: 100%;
+}
+
+#never-pay-extra-tracker-popup input.never-pay-extra-weird-offset {
+	margin-left: -1px;
+}
+
+#never-pay-extra-save-button:hover #never-pay-extra-product-popup {
+	height: 150px;
+}
+
+#never-pay-extra-close-popup {
+	position: absolute;
+	top: 2px;
+	right: 4px;
+	color: #777;
+}
+
+#never-pay-extra-close-popup:hover {
+	cursor: pointer;
+}
+
+#never-pay-extra-login {
+	padding: 5px 20px;
+	border-radius: 3px;
+	border: 1px solid gray;
+}

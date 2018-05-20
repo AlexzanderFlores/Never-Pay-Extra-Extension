@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+	"name": "Never Pay Extra",
+	"short_name": "Never Pay Extra",
+	"version": "2.3",
+	"description": "Price Comparison Tool for Online Shoppers",
+	"icons": {
+		"128": "media/icon128.png",
+		"48": "media/icon48.png",
+		"16": "media/icon16.png"
+	},
+	"browser_action": {
+		"default_icon": "media/icon16.png",
+		"default_popup": "popup/popup.html"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*/*"
+			],
+			"js": [
+				"jquery.js",
+				"updateHTML.js",
+				"sites/amazon.js",
+				"sites/bestbuy.js",
+				"sites/ebay.js",
+				"sites/target.js",
+				"content.js"
+			],
+			"css": [
+				"styles.css"
+			],
+			"run_at": "document_start"
+		}
+	],
+	"permissions": [
+		"tabs"
+	],
+	"web_accessible_resources": [
+		"*.png"
+	]
+}
