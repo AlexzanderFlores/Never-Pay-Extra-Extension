@@ -3,7 +3,7 @@
 	"name": "Never Pay Extra",
 	"short_name": "Never Pay Extra",
 	"version": "2.3",
-	"description": "Price Comparison Tool for Online Shoppers",
+	"description": "Price Comparison App for Online Shoppers",
 	"icons": {
 		"128": "media/icon128.png",
 		"48": "media/icon48.png",
@@ -13,6 +13,11 @@
 		"default_icon": "media/icon16.png",
 		"default_popup": "popup/popup.html"
 	},
+	"background": {
+		"scripts": ["eventPage.js"],
+		"persistent": true
+	},
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 	"content_scripts": [
 		{
 			"matches": [
@@ -30,11 +35,14 @@
 			"css": [
 				"styles.css"
 			],
-			"run_at": "document_start"
+			"run_at": "document_end"
 		}
 	],
 	"permissions": [
-		"tabs"
+		"tabs",
+		"webRequest",
+		"<all_urls>",
+		"notifications"
 	],
 	"web_accessible_resources": [
 		"*.png"

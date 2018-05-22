@@ -9,8 +9,8 @@ platforms.ebay = {
 platforms.ebay.getProductData = () => {
 	let ebayUPC = $('h2[itemprop="gtin13"]').html();
 
-	if(ebayUPC === 'Does not apply') {
-		ebayUPC = undefined;
+	if(ebayUPC === 'Does Not Apply') {
+		return {};
 	} else if(ebayUPC) {
 		price = $('#prcIsum').attr('content');
 
@@ -24,7 +24,7 @@ platforms.ebay.getProductData = () => {
 
 		return {
 			query: ebayUPC,
-			price: price
+			price
 		};
 	}
 };

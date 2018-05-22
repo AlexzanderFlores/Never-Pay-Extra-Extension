@@ -4,29 +4,44 @@ let NPESet = false;
 updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmount, productImage) => {
 	const tag = productURL ? 'a' : 'div';
 
+	let savingsOne = `Save <strong>$${savingsAmount}</strong>`;
+	let savingsTwo = `on <strong>${savingsPlatform}</strong>`;
+	if(!productImage) {
+		productImage = 'https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png';
+		savingsOne = '<strong>Lowest price found!</strong>';
+		savingsTwo = '';
+	}
+
 	let html = `
-		<${tag} id='never-pay-extra-save-button' class='never-pay-extra-result' href='${productURL}' target='_blank'>
+		<${tag} id='npe-save-button' class='npe-result' href='${productURL}' target='_blank'>
 			<img src='https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png'>
-			<span id='never-pay-extra-text-container'>
+			<span id='npe-text-container'>
 				${text}
 			</span>
-			<div class='never-pay-extra-spacer'></div>
-			<div id='never-pay-extra-product-popup' class='never-pay-extra-popup'>
-				<span>We've found a lower price on ${savingsPlatform}! Save $<strong>${savingsAmount}</strong></span>
-				<img src='${productImage}'>
+			<div class='npe-spacer'></div>
+			<div id='npe-product-popup' class='npe-popup'>
+				<span id='npe-inner-product-popup'>
+					<img src='${productImage}'>
+					<span>
+						<span>${savingsOne}</span>
+						<span>${savingsTwo}</span>
+					</span>
+				</span>
 			</div>
 		</${tag}>
 
-		<div id='never-pay-extra-track-button'>
-			<img src='https://s3.amazonaws.com/com.neverpayextra/search-better-deals.png'>
-			<div class='never-pay-extra-spacer'></div>
-			<div id='never-pay-extra-tracker-popup' class='never-pay-extra-popup'>
-				<span id='never-pay-extra-close-popup'>X</span>
+		<div id='npe-track-button'>
+			<img src='https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png'>
+			<span id='npe-track-button-plus'>+</span>
+			<span id='npe-track-button-text'>Add to Wishlist</span>
+			<div class='npe-spacer'></div>
+			<div id='npe-tracker-popup' class='npe-popup'>
+				<span id='npe-close-popup'>X</span>
 				<span>Want a lower price? Signup to be notified when this product drops in price:</span>
-				<input id='never-pay-extra-email-phone' type='text' placeholder='Email or Phone'>
-				<input id='never-pay-extra-password' class='never-pay-extra-weird-offset' type='password' placeholder='Password'>
-				<input id='never-pay-extra-desired-price' class='never-pay-extra-weird-offset' type='number' placeholder='Desired Price'>
-				<button id='never-pay-extra-login'>LOGIN or SIGNUP</button>
+				<input id='npe-email-phone' type='text' placeholder='Email or Phone'>
+				<input id='npe-password' class='npe-weird-offset' type='password' placeholder='Password'>
+				<input id='npe-desired-price' class='npe-weird-offset' type='number' placeholder='Desired Price'>
+				<button id='npe-login'>LOGIN or SIGNUP</button>
 			</div>
 		</div>
 	`;

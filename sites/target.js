@@ -15,11 +15,11 @@ platforms.target.getProductData = () => {
 	});
 
 	if(targetUPC) {
-		const priceContainer = $(platforms.target.product_html_start[0] + ' > span');
+		const priceContainer = $(platforms.target.productHtmlStart[0] + ' > span');
 		price = priceContainer.html().replace(/[^0-9.]/g, '');
 		return {
 			query: targetUPC,
-			price: price
+			price
 		};
 	}
 };

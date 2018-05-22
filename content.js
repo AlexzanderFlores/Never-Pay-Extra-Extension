@@ -13,6 +13,8 @@ const neverPayExtra = domain => {
 	}
 
 	if(!query && !code) {
+		console.log('Not query or code');
+		$('.never-pay-extra').remove();
 		return;
 	}
 
@@ -27,7 +29,10 @@ const neverPayExtra = domain => {
 		url += `&code=${code}`;
 	}
 
+	console.log(url);
+
 	$.get(url).done(data => {
+		console.log(data);
 		let html;
 
 		if(data) {
@@ -37,14 +42,14 @@ const neverPayExtra = domain => {
 				console.log('Actual best price found');
 				updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
 			} else {
-				const display = data.platformDisplay;
-
 				updateHTML(`
 					<span>Save $${savings}</span>
-					<span>on ${display}</span>
-				`, data.url, 'how-to-track', platforms[platform], display, savings, data.productImage);
-
-				$('#never-pay-extra-save-button > span').css('grid-template-rows', '1fr 1fr');
+				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.productImage);
+				chrome.runtime.sendMessage({
+					query: data.upc,
+					savings: savings,
+					platform: data.platformDisplay
+				});
 			}
 		} else {
 			console.log('Could not find a product with the same UPC');
@@ -54,12 +59,12 @@ const neverPayExtra = domain => {
 		console.log('Status', xhr.status);
 		console.log('Text', text);
 		console.log('Error', error);
+		updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
 	});
 };
 
 $(document).ready(() => {
 	const domain = location.href.split('/')[2].split('.')[1];
-
 	if(platforms[domain]) {
 		NPESet = false;
 
@@ -75,18 +80,18 @@ $(document).ready(() => {
 		}
 	}
 
-	$(document).on('mouseover', '#never-pay-extra-track-button', event => {
-		$('#never-pay-extra-tracker-popup').css('height', '240px');
+	// $(document).on('mouseover', '#npe-track-button', event => {
+	// 	$('#npe-tracker-popup').css('height', '240px');
+	// });
+
+	$(document).on('click', '#npe-close-popup', () => {
+		$('#npe-tracker-popup').css('height', '0');
 	});
 
-	$(document).on('click', '#never-pay-extra-close-popup', () => {
-		$('#never-pay-extra-tracker-popup').css('height', '0');
-	});
-
-	$(document).on('click', '#never-pay-extra-login', () => {
-		const emailContainer = $('#never-pay-extra-email-phone');
-		const passwordContainer = $('#never-pay-extra-password');
-		const priceContainer = $('#never-pay-extra-desired-price');
+	$(document).on('click', '#npe-login', () => {
+		const emailContainer = $('#npe-email-phone');
+		const passwordContainer = $('#npe-password');
+		const priceContainer = $('#npe-desired-price');
 
 		const email = emailContainer.val();
 		const password = passwordContainer.val();
