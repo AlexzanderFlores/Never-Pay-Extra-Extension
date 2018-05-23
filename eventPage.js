@@ -1,4 +1,3 @@
-const fireFox = typeof InstallTrigger !== 'undefined';
 let query = '';
 
 chrome.notifications.onClicked.addListener(function() {
@@ -17,9 +16,6 @@ chrome.runtime.onMessage.addListener(function(req, sender, res) {
     message: `You can save $${req.savings} on ${req.platform}
 To save, simply click this notification`
   };
-  if(!fireFox) {
-    params.requireInteraction = true;
-  }
 
   chrome.notifications.create('savingsNotification', params);
 });

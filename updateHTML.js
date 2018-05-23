@@ -1,7 +1,7 @@
 const platforms = {};
 let NPESet = false;
 
-updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmount, productImage) => {
+updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmount, productImage, upc) => {
 	const tag = productURL ? 'a' : 'div';
 
 	let savingsOne = `Save <strong>$${savingsAmount}</strong>`;
@@ -12,14 +12,17 @@ updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmou
 		savingsTwo = '';
 	}
 
+	const trackUrl = upc ? `https://www.neverpayextra.com/track?upc=${upc}` : null;
+	console.log(trackUrl);
+
 	let html = `
-		<${tag} id='npe-save-button' class='npe-result' href='${productURL}' target='_blank'>
+		<${tag} id='npe-save-button' class='npe-center' href='${productURL}' target='_blank'>
 			<img src='https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png'>
-			<span id='npe-text-container'>
+			<span id='npe-text-container' class='npe-center'>
 				${text}
 			</span>
 			<div class='npe-spacer'></div>
-			<div id='npe-product-popup' class='npe-popup'>
+			<div id='npe-product-popup' class='npe-popup npe-center'>
 				<span id='npe-inner-product-popup'>
 					<img src='${productImage}'>
 					<span>
@@ -30,18 +33,18 @@ updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmou
 			</div>
 		</${tag}>
 
-		<div id='npe-track-button'>
-			<img src='https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png'>
-			<span id='npe-track-button-plus'>+</span>
-			<span id='npe-track-button-text'>Add to Wishlist</span>
+		<div id='npe-track-button' class='npe-center'>
+			<a href='${trackUrl}' target='_blank' id='npe-inner-track-button' class='npe-center'>
+				<img src='https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png'>
+				<span id='npe-track-button-plus'>+</span>
+				<span id='npe-track-button-text'>Add to Wishlist</span>
+			</a>
 			<div class='npe-spacer'></div>
-			<div id='npe-tracker-popup' class='npe-popup'>
-				<span id='npe-close-popup'>X</span>
-				<span>Want a lower price? Signup to be notified when this product drops in price:</span>
-				<input id='npe-email-phone' type='text' placeholder='Email or Phone'>
-				<input id='npe-password' class='npe-weird-offset' type='password' placeholder='Password'>
-				<input id='npe-desired-price' class='npe-weird-offset' type='number' placeholder='Desired Price'>
-				<button id='npe-login'>LOGIN or SIGNUP</button>
+			<div id='npe-tracker-popup' class='npe-popup npe-center'>
+				Get notified via email or text message when this product drops below a certain price. Manage your tracked products by clicking the icon at the top right of your browser.
+				<a href='${trackUrl}' target='_blank'>
+					<button>TRACK PRODUCT</button>
+				</a>
 			</div>
 		</div>
 	`;
@@ -73,7 +76,7 @@ updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmou
 		$('.never-pay-extra').html('');
 
 		currentHTML = `
-			<div class='never-pay-extra'>
+			<div class='never-pay-extra npe-center-v'>
 				${html}
 			</div>
 		`;

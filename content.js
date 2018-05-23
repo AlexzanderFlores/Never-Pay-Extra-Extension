@@ -43,8 +43,8 @@ const neverPayExtra = domain => {
 				updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
 			} else {
 				updateHTML(`
-					<span>Save $${savings}</span>
-				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.productImage);
+					<span class='npe-center-h'>Save $${savings}</span>
+				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.productImage, data.upc);
 				chrome.runtime.sendMessage({
 					query: data.upc,
 					savings: savings,
@@ -79,41 +79,4 @@ $(document).ready(() => {
 			neverPayExtra(domain);
 		}
 	}
-
-	// $(document).on('mouseover', '#npe-track-button', event => {
-	// 	$('#npe-tracker-popup').css('height', '240px');
-	// });
-
-	$(document).on('click', '#npe-close-popup', () => {
-		$('#npe-tracker-popup').css('height', '0');
-	});
-
-	$(document).on('click', '#npe-login', () => {
-		const emailContainer = $('#npe-email-phone');
-		const passwordContainer = $('#npe-password');
-		const priceContainer = $('#npe-desired-price');
-
-		const email = emailContainer.val();
-		const password = passwordContainer.val();
-		const price = priceContainer.val();
-
-		if(!emailContainer.val()) {
-			emailContainer.focus();
-			return;
-		}
-
-		if(!passwordContainer.val()) {
-			passwordContainer.focus();
-			return;
-		}
-
-		if(!priceContainer.val() || !$.isNumeric(price)) {
-			priceContainer.focus();
-			return;
-		}
-
-		console.log('Email', `"${email}"`);
-		console.log('Password', `"${password}"`);
-		console.log('Price', `"${price}"`);
-	});
 });

@@ -1,22 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans');
 
-.never-pay-extra {
+.npe-center {
 	display: grid;
-	grid-template-columns: 175px 55px;
 	align-items: center;
+	justify-items: center;
+}
+
+.npe-center-h {
+	display: grid;
+	justify-items: center;
+}
+
+.npe-center-v {
+	display: grid;
+	align-items: center;
+}
+
+.never-pay-extra {
+	grid-template-columns: 175px 50px;
 	margin: 20px 0;
 	grid-column-gap: 10px;
 }
 
 .never-pay-extra > * {
 	position: relative;
-	display: grid;
-	align-items: center;
-	justify-items: center;
 	height: 100%;
 	border: 1px solid #F9656A;
 	border-radius: 5px;
 }
+
+.npe-spacer {
+	position: absolute;
+	height: 15px;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.npe-popup {
+	position: absolute;
+	padding: 0 20px;
+	text-decoration: none;
+	overflow-y: hidden;
+	z-index: 50;
+	color: #000;
+	height: 0;
+	background-color: #FFF;
+	box-shadow: 0 0 10px gray;
+	border-radius: 3px;
+	text-align: center;
+	transition-duration: .25s;
+}
+
+/* Save button */
 
 #npe-save-button {
 	height: 40px;
@@ -33,82 +68,13 @@
 	height: 100%;
 }
 
-#npe-save-button > #npe-text-container {
-	display: grid;
-	align-items: center;
-	justify-items: center;
+#npe-text-container {
 	height: 100%;
 	width: 100%;
 }
 
-#npe-save-button > #npe-text-container > span {
-	display: grid;
-	justify-items: center;
+#npe-text-container > span {
 	width: 100%;
-}
-
-#npe-track-button {
-	grid-template-columns: 28px 12px 115px;
-	grid-template-rows: 1fr 1fr;
-	grid-template-areas:
-	'npe-track-button-img npe-track-button-plus npe-track-button-text'
-	'npe-track-button-img . npe-track-button-text';
-	padding: 0 5px;
-	width: 50px;
-	overflow: hidden;
-	transition-duration: .25s;
-	cursor: pointer;
-}
-
-#npe-track-button:hover {
-	width: 165px;
-}
-
-#npe-track-button img {
-	height: 28px;
-	width: 28px;
-	grid-area: npe-track-button-img;
-}
-
-#npe-track-button > span {
-	font-weight: bold;
-	color: #F9616E;
-}
-
-#npe-track-button #npe-track-button-plus {
-	grid-area: npe-track-button-plus;
-	font-size: 20px;
-}
-
-#npe-track-button #npe-track-button-text {
-	grid-area: npe-track-button-text;
-	font-size: 14px;
-	padding-left: 10px;
-}
-
-.npe-spacer {
-	position: absolute;
-	height: 15px;
-	width: 100%;
-	margin-top: 50px;
-}
-
-.npe-popup {
-	position: absolute;
-	display: grid;
-	padding: 0 20px;
-	align-items: center;
-	justify-items: center;
-	text-decoration: none;
-	overflow-y: hidden;
-	z-index: 999;
-	color: #000;
-	height: 0;
-	background-color: #FFF;
-	box-shadow: 0 0 10px gray;
-	border-radius: 3px;
-	text-align: center;
-	transition-duration: .25s;
 }
 
 #npe-product-popup {
@@ -138,33 +104,82 @@
 	height: 42px;
 }
 
-#npe-tracker-popup {
-	width: 200px;
-	margin-top: 285px;
-}
-
-#npe-tracker-popup input {
-	width: 100%;
-}
-
-#npe-tracker-popup input.npe-weird-offset {
-	margin-left: -1px;
-}
-
 #npe-save-button:hover #npe-product-popup {
 	height: 112px;
 }
 
-#npe-close-popup {
-	position: absolute;
-	top: 2px;
-	right: 4px;
-	color: #777;
+/* Track button */
+
+#npe-track-button {
+	padding: 0 5px;
+}
+
+#npe-track-button a:hover {
+	text-decoration: none;
+}
+
+#npe-track-button:hover #npe-track-button-text {
+	text-decoration: underline;
+}
+
+#npe-track-button, #npe-inner-track-button {
+	width: 50px;
+	transition-duration: .25s;
+}
+
+#npe-track-button:hover,
+#npe-track-button:hover #npe-inner-track-button {
+	width: 165px;
+}
+
+#npe-track-button:hover #npe-tracker-popup {
+	height: 135px;
+	width: 275px;
+	padding: 5px;
+}
+
+#npe-inner-track-button {
+	grid-template-columns: 28px 12px 115px;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+	'npe-track-img npe-track-plus npe-track-text'
+	'npe-track-img . npe-track-text';
+	overflow: hidden;
 	cursor: pointer;
 }
 
-#npe-login {
-	padding: 5px 20px;
-	border-radius: 3px;
-	border: 1px solid gray;
+#npe-inner-track-button img {
+	height: 28px;
+	width: 28px;
+	grid-area: npe-track-img;
+}
+
+#npe-inner-track-button > span {
+	font-weight: bold;
+	color: #F9616E;
+}
+
+#npe-track-button-plus {
+	grid-area: npe-track-plus;
+	font-size: 20px;
+}
+
+#npe-track-button-text {
+	grid-area: npe-track-text;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+#npe-tracker-popup {
+	margin-top: 190px;
+}
+
+#npe-tracker-popup button {
+	height: 30px;
+	width: 125px;
+	border-radius: 25px;
+	border: none;
+	background-color: #F9656A;
+	color: #FFF;
+	cursor: pointer;
 }
