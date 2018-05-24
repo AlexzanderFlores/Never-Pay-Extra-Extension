@@ -16,10 +16,19 @@
 	align-items: center;
 }
 
+.npe-strong {
+	font-weight: bold;
+}
+
 .never-pay-extra {
 	grid-template-columns: 175px 50px;
 	margin: 20px 0;
-	grid-column-gap: 10px;
+	grid-gap: 10px;
+}
+
+.never-pay-extra.npe-target {
+	grid-template-columns: none;
+	grid-template-rows: 1fr 1fr;
 }
 
 .never-pay-extra > * {
@@ -57,11 +66,11 @@
 	height: 40px;
 	width: 175px;
 	grid-template-columns: 50px auto;
-	padding: 5px 0;
 	font-family: 'Lato', 'Open Sans', sans-serif;
 	color: #F9616E;
 	font-size: 16px;
 	font-weight: bold;
+	box-sizing: border-box;
 }
 
 #npe-save-button img {
@@ -71,15 +80,21 @@
 #npe-text-container {
 	height: 100%;
 	width: 100%;
+	font-weight: bold;
 }
 
 #npe-text-container > span {
 	width: 100%;
+	font-weight: bold;
 }
 
 #npe-product-popup {
 	width: 265px;
 	margin-top: 170px;
+}
+
+.npe-ebay #npe-product-popup {
+	margin-left: 135px;
 }
 
 #npe-inner-product-popup {
@@ -92,6 +107,7 @@
 #npe-inner-product-popup img {
 	height: auto;
 	width: auto;
+	max-width: 110px;
 	grid-area: npe-product-img;
 }
 
@@ -111,7 +127,13 @@
 /* Track button */
 
 #npe-track-button {
-	padding: 0 5px;
+	height: 40px;
+	width: 50px;
+	box-sizing: border-box;
+}
+
+.never-pay-extra.npe-target #npe-track-button {
+	background-color: #FFF;
 }
 
 #npe-track-button a:hover {
@@ -123,35 +145,39 @@
 }
 
 #npe-track-button, #npe-inner-track-button {
-	width: 50px;
+	width: 55px;
 	transition-duration: .25s;
 }
 
 #npe-track-button:hover,
 #npe-track-button:hover #npe-inner-track-button {
-	width: 165px;
+	width: 175px;
 }
 
 #npe-track-button:hover #npe-tracker-popup {
 	height: 135px;
 	width: 275px;
+}
+
+.never-pay-extra:not(.npe-ebay) #npe-track-button:hover #npe-tracker-popup {
 	padding: 5px;
 }
 
 #npe-inner-track-button {
-	grid-template-columns: 28px 12px 115px;
+	grid-template-columns: 35px 15px 115px;
 	grid-template-rows: 1fr 1fr;
 	grid-template-areas:
 	'npe-track-img npe-track-plus npe-track-text'
 	'npe-track-img . npe-track-text';
 	overflow: hidden;
 	cursor: pointer;
+	height: 40px;
 }
 
 #npe-inner-track-button img {
+	grid-area: npe-track-img;
 	height: 28px;
 	width: 28px;
-	grid-area: npe-track-img;
 }
 
 #npe-inner-track-button > span {
@@ -167,19 +193,22 @@
 #npe-track-button-text {
 	grid-area: npe-track-text;
 	font-size: 14px;
-	padding-left: 10px;
+	padding-left: 5px;
 }
 
 #npe-tracker-popup {
 	margin-top: 190px;
+	font-size: 13px;
 }
 
 #npe-tracker-popup button {
 	height: 30px;
-	width: 125px;
+	width: 140px;
 	border-radius: 25px;
 	border: none;
 	background-color: #F9656A;
 	color: #FFF;
 	cursor: pointer;
+	font-size: 13px;
+	padding: 5px 0;
 }

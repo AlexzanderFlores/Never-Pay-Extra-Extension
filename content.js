@@ -1,5 +1,6 @@
 const neverPayExtra = domain => {
 	platform = domain;
+	$('.never-pay-extra').addClass(`npe-${platform}`);
 
 	let price;
 	let code;
@@ -35,7 +36,7 @@ const neverPayExtra = domain => {
 		console.log(data);
 		let html;
 
-		if(data) {
+		if(data && data.upc) {
 			const savings = (data.comparePrice - data.price).toFixed(2);
 
 			if(Number(savings) <= 0) {
@@ -73,7 +74,10 @@ $(document).ready(() => {
 		];
 
 		if(delayedDomains.indexOf(domain) >= 0) {
-			setTimeout(() => neverPayExtra(domain), 5000);
+			setTimeout(() => {
+				updateHTML('Finding Deals...', null, 'how-to-track', platforms[domain]);
+				neverPayExtra(domain);
+			}, 5000);
 		} else {
 			updateHTML('Finding Deals...', null, 'how-to-track', platforms[domain]);
 			neverPayExtra(domain);

@@ -4,16 +4,15 @@ let NPESet = false;
 updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmount, productImage, upc) => {
 	const tag = productURL ? 'a' : 'div';
 
-	let savingsOne = `Save <strong>$${savingsAmount}</strong>`;
-	let savingsTwo = `on <strong>${savingsPlatform}</strong>`;
+	let savingsOne = `Save <strong class='npe-strong'>$${savingsAmount}</strong>`;
+	let savingsTwo = `on <strong class='npe-strong'>${savingsPlatform}</strong>`;
 	if(!productImage) {
 		productImage = 'https://s3.amazonaws.com/com.neverpayextra/logo_navbar.png';
-		savingsOne = '<strong>Lowest price found!</strong>';
+		savingsOne = `<strong class='npe-strong'>Lowest price found!</strong>`;
 		savingsTwo = '';
 	}
 
 	const trackUrl = upc ? `https://www.neverpayextra.com/track?upc=${upc}` : null;
-	console.log(trackUrl);
 
 	let html = `
 		<${tag} id='npe-save-button' class='npe-center' href='${productURL}' target='_blank'>
