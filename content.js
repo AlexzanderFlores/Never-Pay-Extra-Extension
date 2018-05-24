@@ -2,6 +2,11 @@ const neverPayExtra = domain => {
 	platform = domain;
 	$('.never-pay-extra').addClass(`npe-${platform}`);
 
+	const titleBar = $('#titleBar');
+	if(titleBar.length) {
+		$('.never-pay-extra').addClass(`npe-amazon-title-bar`);
+	}
+
 	let price;
 	let code;
 	let query;

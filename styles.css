@@ -26,7 +26,7 @@
 	grid-gap: 10px;
 }
 
-.never-pay-extra.npe-target {
+.never-pay-extra.npe-target, .never-pay-extra.npe-amazon-title-bar {
 	grid-template-columns: none;
 	grid-template-rows: 1fr 1fr;
 }
@@ -58,6 +58,10 @@
 	border-radius: 3px;
 	text-align: center;
 	transition-duration: .25s;
+}
+
+.never-pay-extra.npe-amazon-title-bar .npe-popup {
+	margin-left: 95px;
 }
 
 /* Save button */
@@ -130,10 +134,6 @@
 	height: 40px;
 	width: 50px;
 	box-sizing: border-box;
-}
-
-.never-pay-extra.npe-target #npe-track-button {
-	background-color: #FFF;
 }
 
 #npe-track-button a:hover {
