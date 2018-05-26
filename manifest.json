@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Never Pay Extra",
 	"short_name": "Never Pay Extra",
-	"version": "2.7",
+	"version": "2.8",
 	"description": "Price Comparison App for Online Shoppers",
 	"icons": {
 		"128": "media/icon128.png",

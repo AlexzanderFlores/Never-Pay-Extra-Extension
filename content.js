@@ -50,7 +50,7 @@ const neverPayExtra = domain => {
 			} else {
 				updateHTML(`
 					<span class='npe-center-h'>Save $${savings}</span>
-				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.image, data.upc);
+				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.images[0], data.upc);
 				chrome.runtime.sendMessage({
 					query: data.upc,
 					savings: savings,
