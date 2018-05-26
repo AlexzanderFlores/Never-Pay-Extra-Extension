@@ -9,14 +9,11 @@ platforms.bestbuy.getProductData = () => {
 	if(location.href.startsWith('https://www.bestbuy.com/site/searchpage')) {
 		return {};
 	}
-	const bestBuySku = $('#sku-value').html();
+	const query = $('#sku-value').html();
 
-	if(bestBuySku) {
+	if(query) {
 		price = $('.priceView-hero-price.priceView-purchase-price span').attr('aria-label').split('$')[1];
-		return {
-			code: bestBuySku,
-			query: bestBuySku,
-			price
-		};
+		
+		return { query, code: query, price };
 	}
 };

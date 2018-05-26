@@ -7,9 +7,9 @@ platforms.amazon = {
 };
 
 platforms.amazon.getProductData = () => {
-	const asin = $('#ASIN').val();
+	const query = $('#ASIN').val();
 
-	if(asin) {
+	if(query) {
 		try {
 			price = $('#priceblock_saleprice').html().replace('$', '');
 		} catch(e) {
@@ -29,10 +29,7 @@ platforms.amazon.getProductData = () => {
 				price = $('#priceblock_dealprice').html();
 			}
 		}
-		return {
-			query: asin,
-			code: asin,
-			price
-		};
+
+		return { query, code: query, price };
 	}
 };

@@ -173,6 +173,7 @@
 	overflow: hidden;
 	cursor: pointer;
 	height: 40px;
+	text-decoration: none;
 }
 
 #npe-inner-track-button img {

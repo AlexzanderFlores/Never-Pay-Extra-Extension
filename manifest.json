@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Never Pay Extra",
 	"short_name": "Never Pay Extra",
-	"version": "2.6",
+	"version": "2.7",
 	"description": "Price Comparison App for Online Shoppers",
 	"icons": {
 		"128": "media/icon128.png",
@@ -30,6 +30,7 @@
 				"sites/bestbuy.js",
 				"sites/ebay.js",
 				"sites/target.js",
+				"sites/walmart.js",
 				"content.js"
 			],
 			"css": [

@@ -7,11 +7,11 @@ platforms.ebay = {
 };
 
 platforms.ebay.getProductData = () => {
-	let ebayUPC = $('h2[itemprop="gtin13"]').html();
+	let query = $('h2[itemprop="gtin13"]').html();
 
-	if(ebayUPC.toLowerCase() === 'does not apply') {
+	if(query.toLowerCase() === 'does not apply') {
 		return {};
-	} else if(ebayUPC) {
+	} else if(query) {
 		price = $('#prcIsum').attr('content');
 
 		if(!price) {
@@ -22,9 +22,6 @@ platforms.ebay.getProductData = () => {
 			}
 		}
 
-		return {
-			query: ebayUPC,
-			price
-		};
+		return { query, price };
 	}
 };

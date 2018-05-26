@@ -69,13 +69,15 @@ const neverPayExtra = domain => {
 	});
 };
 
+const isUPC = query => query && query.length === 12 && typeof(query) != 'boolean' && !isNaN(query);
+
 $(document).ready(() => {
 	const domain = location.href.split('/')[2].split('.')[1];
 	if(platforms[domain]) {
 		NPESet = false;
 
 		const delayedDomains = [
-			'chegg', 'target'
+			'chegg', 'target', 'walmart'
 		];
 
 		if(delayedDomains.indexOf(domain) >= 0) {
