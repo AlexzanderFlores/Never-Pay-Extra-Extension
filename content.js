@@ -46,11 +46,11 @@ const neverPayExtra = domain => {
 
 			if(Number(savings) <= 0) {
 				console.log('Actual best price found');
-				updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
+				updateHTML('Best Price!', null, 'how-to-track', platforms[platform], data.upc);
 			} else {
 				updateHTML(`
 					<span class='npe-center-h'>Save $${savings}</span>
-				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.platformDisplay, savings, data.images[0], data.upc);
+				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.upc, data.platformDisplay, savings, data.images[0]);
 				chrome.runtime.sendMessage({
 					query: data.upc,
 					savings: savings,
@@ -59,7 +59,7 @@ const neverPayExtra = domain => {
 			}
 		} else {
 			console.log('Could not find a product with the same UPC');
-			updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
+			updateHTML('Best Price!', null, 'how-to-track', platforms[platform], data.upc);
 		}
 	}).fail((xhr, text, error) => {
 		console.log('Status', xhr.status);

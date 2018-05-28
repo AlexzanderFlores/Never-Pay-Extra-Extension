@@ -1,7 +1,7 @@
 const platforms = {};
 let NPESet = false;
 
-updateHTML = (text, productURL, trackURL, platform, savingsPlatform, savingsAmount, productImage, upc) => {
+updateHTML = (text, productURL, trackURL, platform, upc, savingsPlatform, savingsAmount, productImage) => {
 	const tag = productURL ? 'a' : 'div';
 
 	let savingsOne = `Save <strong class='npe-strong'>$${savingsAmount}</strong>`;
