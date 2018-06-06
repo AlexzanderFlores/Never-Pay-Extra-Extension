@@ -26,7 +26,9 @@
 	grid-gap: 10px;
 }
 
-.never-pay-extra.npe-target, .never-pay-extra.npe-amazon-title-bar {
+.never-pay-extra.npe-target,
+.never-pay-extra.npe-amazon-title-bar,
+.never-pay-extra.npe-textbooks {
 	grid-template-columns: none;
 	grid-template-rows: 1fr 1fr;
 }

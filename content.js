@@ -12,6 +12,7 @@ const neverPayExtra = domain => {
 	let query;
 
 	const productData = platforms[platform].getProductData();
+	console.log(productData);
 	if(productData) {
 		price = productData.price;
 		code = productData.code;
@@ -38,7 +39,6 @@ const neverPayExtra = domain => {
 	console.log(url);
 
 	$.get(url).done(data => {
-		console.log(data);
 		let html;
 
 		if(data && data.upc) {
@@ -79,7 +79,9 @@ $(document).ready(() => {
 		NPESet = false;
 
 		const delayedDomains = [
-			'chegg', 'target', 'walmart'
+			'chegg',
+			'target',
+			'walmart'
 		];
 
 		if(delayedDomains.indexOf(domain) >= 0) {

@@ -1,9 +1,6 @@
 platforms.ebay = {
 	name: 'ebay',
-	productHtmlStart: [
-		'#vi-lkhdr-v4-plchdr',
-		'.actPanel.vi-noborder'
-	]
+	productHtmlStart: [ '#vi-lkhdr-v4-plchdr', '.actPanel.vi-noborder' ]
 };
 
 platforms.ebay.getProductData = () => {
@@ -12,7 +9,7 @@ platforms.ebay.getProductData = () => {
 	if(query.toLowerCase() === 'does not apply') {
 		return {};
 	} else if(query) {
-		price = $('#prcIsum').attr('content');
+		let price = $('#prcIsum').attr('content');
 
 		if(!price) {
 			try {

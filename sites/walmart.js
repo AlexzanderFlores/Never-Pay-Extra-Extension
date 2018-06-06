@@ -1,8 +1,6 @@
 platforms.walmart = {
   name: 'walmart',
-  productHtmlStart: [
-    '.product-offer-price'
-  ]
+  productHtmlStart: [ '.product-offer-price' ]
 };
 
 platforms.walmart.getProductData = () => {

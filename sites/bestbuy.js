@@ -1,8 +1,6 @@
 platforms.bestbuy = {
 	name: 'bestbuy',
-	productHtmlStart: [
-		'.price-block'
-	]
+	productHtmlStart: [ '.price-block' ]
 };
 
 platforms.bestbuy.getProductData = () => {
@@ -12,8 +10,8 @@ platforms.bestbuy.getProductData = () => {
 	const query = $('#sku-value').html();
 
 	if(query) {
-		price = $('.priceView-hero-price.priceView-purchase-price span').attr('aria-label').split('$')[1];
-		
+		const price = $('.priceView-hero-price.priceView-purchase-price span').attr('aria-label').split('$')[1];
+
 		return { query, code: query, price };
 	}
 };

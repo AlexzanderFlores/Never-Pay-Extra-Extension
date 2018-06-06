@@ -1,8 +1,6 @@
 platforms.target = {
 	name: 'target',
-	productHtmlStart: [
-		'[data-test="product-price"]'
-	]
+	productHtmlStart: [ '[data-test="product-price"]' ]
 };
 
 platforms.target.getProductData = () => {
@@ -16,8 +14,8 @@ platforms.target.getProductData = () => {
 
 	if(query) {
 		const priceContainer = $(platforms.target.productHtmlStart[0] + ' > span');
-		price = priceContainer.html().replace(/[^0-9.]/g, '');
-		
+		let price = priceContainer.html().replace(/[^0-9.]/g, '');
+
 		return { query, price };
 	}
 };

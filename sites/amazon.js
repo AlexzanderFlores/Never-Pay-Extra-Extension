@@ -1,15 +1,13 @@
 platforms.amazon = {
 	name: 'amazon',
-	productHtmlStart: [
-		'#mediaPrice_feature_div',
-		'#price'
-	]
+	productHtmlStart: [ '#mediaPrice_feature_div', '#price' ]
 };
 
 platforms.amazon.getProductData = () => {
 	const query = $('#ASIN').val();
 
 	if(query) {
+		let price;
 		try {
 			price = $('#priceblock_saleprice').html().replace('$', '');
 		} catch(e) {
