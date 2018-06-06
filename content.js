@@ -40,6 +40,7 @@ const neverPayExtra = domain => {
 
 	$.get(url).done(data => {
 		let html;
+		console.log(data);
 
 		if(data && data.upc) {
 			const savings = (data.comparePrice - data.price).toFixed(2);
@@ -53,19 +54,19 @@ const neverPayExtra = domain => {
 				`, `https://www.neverpayextra.com/search?q=${data.upc}&ref=button`, 'how-to-track', platforms[platform], data.upc, data.platformDisplay, savings, data.images[0]);
 				chrome.runtime.sendMessage({
 					query: data.upc,
-					savings: savings,
+					savings,
 					platform: data.platformDisplay
 				});
 			}
 		} else {
 			console.log('Could not find a product with the same UPC');
-			updateHTML('Best Price!', null, 'how-to-track', platforms[platform], data.upc);
+			updateHTML('Best Price!', null, 'how-to-track', platforms[platform], code || query);
 		}
 	}).fail((xhr, text, error) => {
 		console.log('Status', xhr.status);
 		console.log('Text', text);
 		console.log('Error', error);
-		updateHTML('Best Price!', null, 'how-to-track', platforms[platform]);
+		updateHTML('Best Price!', null, 'how-to-track', platforms[platform], data.upc);
 	});
 };
 
@@ -81,7 +82,8 @@ $(document).ready(() => {
 		const delayedDomains = [
 			'chegg',
 			'target',
-			'walmart'
+			'walmart',
+			'abebooks'
 		];
 
 		if(delayedDomains.indexOf(domain) >= 0) {

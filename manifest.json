@@ -33,6 +33,7 @@
 				"sites/walmart.js",
 				"sites/chegg.js",
 				"sites/textbooks.js",
+				"sites/abebooks.js",
 				"content.js"
 			],
 			"css": [
