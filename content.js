@@ -12,7 +12,6 @@ const neverPayExtra = domain => {
 	let query;
 
 	const productData = platforms[platform].getProductData();
-	console.log(productData);
 	if(productData) {
 		price = productData.price;
 		code = productData.code;
@@ -36,11 +35,8 @@ const neverPayExtra = domain => {
 		url += `&code=${code}`;
 	}
 
-	console.log(url);
-
 	$.get(url).done(data => {
 		let html;
-		console.log(data);
 
 		if(data && data.upc) {
 			const savings = (data.comparePrice - data.price).toFixed(2);
@@ -70,7 +66,7 @@ const neverPayExtra = domain => {
 	});
 };
 
-const isUPC = query => query && query.length === 12 && typeof(query) != 'boolean' && !isNaN(query);
+const isUPC = query => query && (query.length === 12 || query.length === 13) && typeof(query) != 'boolean' && !isNaN(query);
 
 $(document).ready(() => {
 	const domain = location.href.split('/')[2].split('.')[1];
@@ -90,7 +86,7 @@ $(document).ready(() => {
 			setTimeout(() => {
 				updateHTML('Finding Deals...', null, 'how-to-track', platforms[domain]);
 				neverPayExtra(domain);
-			}, 5000);
+			}, 3000);
 		} else {
 			updateHTML('Finding Deals...', null, 'how-to-track', platforms[domain]);
 			neverPayExtra(domain);

@@ -15,7 +15,6 @@ platforms.abebooks.getProductData = () => {
 
 	if(ISBN) {
 		const price = $('#book-price').html().replace(/[^0-9.]/g, '');
-		console.log('Price', price);
 		return { query: ISBN, code: ISBN, price };
 	}
 };

@@ -29,23 +29,26 @@ updateHTML = (text, productURL, trackURL, platform, upc, savingsPlatform, saving
 					</span>
 				</span>
 			</div>
-		</${tag}>
+		</${tag}>`;
 
-		<div id='npe-track-button' class='npe-center'>
-			<a href='${trackUrl}' target='_blank' id='npe-inner-track-button' class='npe-center'>
-				<img src='https://s3.amazonaws.com/neverpayextra/logo.png'>
-				<span id='npe-track-button-plus'>+</span>
-				<span id='npe-track-button-text'>Add to Wishlist</span>
-			</a>
-			<div class='npe-spacer'></div>
-			<div id='npe-tracker-popup' class='npe-popup npe-center'>
-				Get notified via email or text message when this product drops below a certain price.
-				<a href='${trackUrl}' target='_blank'>
-					<button>TRACK PRODUCT</button>
-				</a>
-			</div>
-		</div>
-	`;
+		if(isUPC(upc)) {
+			html += `
+				<div id='npe-track-button' class='npe-center'>
+					<a href='${trackUrl}' target='_blank' id='npe-inner-track-button' class='npe-center'>
+						<img src='https://s3.amazonaws.com/neverpayextra/logo.png'>
+						<span id='npe-track-button-plus'>+</span>
+						<span id='npe-track-button-text'>Add to Wishlist</span>
+					</a>
+					<div class='npe-spacer'></div>
+					<div id='npe-tracker-popup' class='npe-popup npe-center'>
+						Get notified via email or text message when this product drops below a certain price.
+						<a href='${trackUrl}' target='_blank'>
+							<button>TRACK PRODUCT</button>
+						</a>
+					</div>
+				</div>
+			`;
+		}
 
 	let obj;
 
