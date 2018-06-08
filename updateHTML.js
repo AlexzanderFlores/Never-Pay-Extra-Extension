@@ -39,7 +39,7 @@ updateHTML = (text, productURL, trackURL, platform, upc, savingsPlatform, saving
 			</a>
 			<div class='npe-spacer'></div>
 			<div id='npe-tracker-popup' class='npe-popup npe-center'>
-				Get notified via email or text message when this product drops below a certain price. Manage your tracked products by clicking the icon at the top right of your browser.
+				Get notified via email or text message when this product drops below a certain price.
 				<a href='${trackUrl}' target='_blank'>
 					<button>TRACK PRODUCT</button>
 				</a>
