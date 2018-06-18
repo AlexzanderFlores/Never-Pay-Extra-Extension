@@ -1,11 +1,11 @@
 const platforms = {};
 let NPESet = false;
 
-updateHTML = (text, productURL, trackURL, platform, upc, savingsPlatform, savingsAmount, productImage) => {
-	const tag = productURL ? 'a' : 'div';
+updateHTML = (text, npeURL, trackURL, platform, upc, otherListings, savingsAmount, percentage, productImage) => {
+	const tag = npeURL ? 'a' : 'div';
 
-	let savingsOne = `Save <strong class='npe-strong'>$${savingsAmount}</strong>`;
-	let savingsTwo = `on <strong class='npe-strong'>${savingsPlatform}</strong>`;
+	let savingsOne = `Save up to <strong class='npe-strong'>${percentage}%</strong>`;
+	let savingsTwo = `with <strong class='npe-strong'>${otherListings}</strong> seller${otherListings === 1 ? '' : 's'}`;
 	if(!productImage) {
 		productImage = 'https://s3.amazonaws.com/neverpayextra/logo.png';
 		savingsOne = `<strong class='npe-strong'>Lowest price found!</strong>`;
@@ -14,7 +14,7 @@ updateHTML = (text, productURL, trackURL, platform, upc, savingsPlatform, saving
 
 	const trackUrl = upc ? `https://www.neverpayextra.com/track?upc=${upc}` : null;
 	let html = `
-		<${tag} id='npe-save-button' class='npe-center' href='${productURL}' target='_blank'>
+		<${tag} id='npe-save-button' class='npe-center' href='${npeURL}' target='_blank'>
 			<img src='https://s3.amazonaws.com/neverpayextra/logo.png'>
 			<span id='npe-text-container' class='npe-center'>
 				${text}

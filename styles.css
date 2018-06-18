@@ -21,7 +21,7 @@
 }
 
 .never-pay-extra {
-	grid-template-columns: 175px 50px;
+	grid-template-columns: 200px 50px;
 	margin: 20px 0;
 	grid-gap: 10px;
 }
@@ -71,7 +71,7 @@
 
 #npe-save-button {
 	height: 40px;
-	width: 175px;
+	width: auto;
 	grid-template-columns: 50px auto;
 	font-family: 'Lato', 'Open Sans', sans-serif;
 	color: #F9616E;
@@ -106,9 +106,9 @@
 
 #npe-inner-product-popup {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 120px;
 	grid-template-areas: 'npe-product-img npe-product-span';
-	grid-column-gap: 15px;
+	grid-column-gap: 10px;
 }
 
 #npe-inner-product-popup img {
@@ -215,4 +215,22 @@
 	cursor: pointer;
 	font-size: 13px;
 	padding: 5px 0;
+}
+
+a#npe-save-button {
+	animation: npe-savings-animation 1s linear infinite;
+}
+
+@keyframes npe-savings-animation {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 189, 74, .7);
+	}
+
+	50% {
+		box-shadow: 0 0 0 5px rgba(255, 189, 74, .7);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 189, 74, .7);
+	}
 }
